@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/estilos.css"> 
+    <title>MAQUINA REGISTRADORA</title>
+</head>
+<body>
+    <h1>MAQUINA REGISTRADORA</h1>
+
+    <form action="/tasks" method="POST">
+        <input type="text" name="title" placeholder="Nuevo producto" required>
+        <button type="submit">Agregar</button>
+    </form>
+
+    <ul id="task-list"></ul>
+
+    <script>
+        
+        fetch('/tasks')
+            .then(response => response.json())
+            .then(tasks => {
+                const taskList = document.getElementById('task-list');
+                taskList.innerHTML = ''; 
+                tasks.forEach(task => {
+                    const li = document.createElement('li');
+                    li.innerHTML = `${task.title} 
+                        <form action="/tasks/delete" method="POST" style="display:inline;">
+                            <input type="hidden" name="id" value="${task.id}">
+                            <button type="submit">Delete</button>
+                        </form>`;
+                    taskList.appendChild(li);
+                });
+            })
+            .catch(error => console.error('Error fetching tasks:', error));
+    </script>
+</body>
+</html>

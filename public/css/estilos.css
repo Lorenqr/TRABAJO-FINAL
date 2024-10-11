@@ -1,0 +1,59 @@
+body {
+    background-color: darkorchid;
+}
+
+.div-titulo {
+    width: 100%;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.div-titulo h1 {
+    font-weight: 300;
+}
+
+.contenedor {
+    width: 100%;
+    height: calc(100vh - 100px);
+    display: flex;
+    justify-content: center;
+}
+
+.contenedor .div-formulario, .contenedor .div-listado {
+    background-color: rgba(135, 132, 132);
+    border-radius: 10px;
+    box-shadow: 10px 10px rgba(0, 0, 0, 0.3);
+}
+
+.contenedor .div-formulario {
+    width: 30%;
+    height: 250px;
+    margin: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.contenedor .div-listado {
+    width: 55%;
+    margin: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.btn-eliminar {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.btn-eliminar:hover {
+    background-color: darkred;
+}
+
