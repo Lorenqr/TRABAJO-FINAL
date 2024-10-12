@@ -1,3 +1,4 @@
+/*Estilos el cual le da tamaño y color a la pagina */
 body {
     background-color: darkorchid;
 }
@@ -12,6 +13,7 @@ body {
 
 .div-titulo h1 {
     font-weight: 300;
+    
 }
 
 .contenedor {

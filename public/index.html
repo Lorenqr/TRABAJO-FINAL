@@ -9,13 +9,20 @@
 <body>
     <h1>MAQUINA REGISTRADORA</h1>
 
+    <!--Metodo de creación que se comunica al app -->
     <form action="/tasks" method="POST">
         <input type="text" name="title" placeholder="Nuevo producto" required>
         <button type="submit">Agregar</button>
     </form>
 
+    <!--Contenedor de registros-->
     <ul id="task-list"></ul>
 
+    <!--Script que consulta a la base de datos y trae todos los registros que encuentren a la tabla task
+    se le agrega boton editar donde envia el id y el titulo al app.js el cual encontrara el metodo 
+    para realizar el update
+    se agrega boton eliminar donde envia el id de manera oculta en el fronted, se envia al app.js el cual
+    encontrara el metodo para realizar delete-->
     <script>
         
         fetch('/tasks')
@@ -25,11 +32,18 @@
                 taskList.innerHTML = ''; 
                 tasks.forEach(task => {
                     const li = document.createElement('li');
-                    li.innerHTML = `${task.title} 
+                    li.innerHTML = `${task.id} 
+                        <form action="/tasks/update" method="POST" style="display:inline;">
+                            <input type="text" name="title" value ="${task.title}">
+                            <input type="hidden" name="id" value ="${task.id}">
+                            <button type="submit">Editar</button>
+                        </form>
+
                         <form action="/tasks/delete" method="POST" style="display:inline;">
                             <input type="hidden" name="id" value="${task.id}">
                             <button type="submit">Delete</button>
                         </form>`;
+
                     taskList.appendChild(li);
                 });
             })
